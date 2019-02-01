@@ -28,7 +28,7 @@ const server = http.createServer(async (request, response) => {
 
   const res = {
     "schemaVersion": 1,
-    "label": params.label || "patreon",
+    "label": "patreon",
     "message": message,
     "color": params.color || "ff5441"
   }
