@@ -24,7 +24,7 @@ https://shieldsio-patreon.herokuapp.com/endel/pledges
 - Endpoint: `https://shieldsio-patreon.herokuapp.com/endel/pledges`
 - Endpoint encoded: `https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2Fendel%2Fpledges`
 - Using shields.io `endpoint`/`url`: `https://img.shields.io/badge/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2Fendel%2Fpledges&style=for-the-badge`
-- Result: <a href="https://patreon.com/endel"><img src="https://img.shields.io/badge/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2Fendel%2Fpledges&style=for-the-badge" /> </a>
+- Result: <a href="https://patreon.com/endel"><img src="https://img.shields.io/badge/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2Fendel%2Fpledgesssss&style=for-the-badge" /> </a>
 ## Usage
 
 ```
