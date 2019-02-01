@@ -1,0 +1,28 @@
+{
+  "name": "shieldsio-patreon",
+  "version": "1.0.0",
+  "description": "displays amount of donations you have on patreon",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/endel/shieldsio-patreon.git"
+  },
+  "keywords": [
+    "shieldsio",
+    "patreon"
+  ],
+  "author": "Endel Dreyer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/endel/shieldsio-patreon/issues"
+  },
+  "homepage": "https://github.com/endel/shieldsio-patreon#readme",
+  "dependencies": {
+    "httpie": "^1.0.1",
+    "jsdom": "^13.2.0"
+  }
+}
