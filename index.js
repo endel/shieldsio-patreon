@@ -8,7 +8,7 @@ const server = http.createServer(async (request, response) => {
 
   if (!username) {
     response.writeHead(500, { 'Content-Type': 'application/json' });
-    response.write(JSON.stringify({"error": '"username" is required on query string.'}));
+    response.write(JSON.stringify({"error": 'username must be set.'}));
     return;
   }
 
