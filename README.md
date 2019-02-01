@@ -2,9 +2,6 @@
 
 Custom endpoint to allow displaying Patreon's number of patrons or amount of pledges. It uses [shields.io's Endpoint feature](https://shields.io/#/endpoint).
 
-This endpoint allows you to display your patreon's current number of patrons or
-amount of donations per month on the platform.
-
 ## Usage:
 
 - Endpoint: `https://shieldsio-patreon.herokuapp.com/endel/pledges`
