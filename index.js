@@ -1,12 +1,10 @@
 const http = require('http');
-const querystring = require('querystring');
 const httpie = require('httpie');
 const JSDOM = require('jsdom').JSDOM;
 const port = process.env.PORT || 8888;
 
 const server = http.createServer(async (request, response) => {
-  const params = querystring.parse(request.url.substr(2));
-  const username = params.username;
+  const [ _, username, usePledges ] = request.url.split("/");
 
   if (!username) {
     response.writeHead(500, { 'Content-Type': 'application/json' });
@@ -18,9 +16,9 @@ const server = http.createServer(async (request, response) => {
   const { document } = (new JSDOM(data)).window;
 
   const pledges = document.querySelectorAll('h6.sc-iwsKbI');
-  const message = (params.pledges)
-    ? pledges[1].innerHTML
-    : pledges[0].innerHTML;
+  const message = (usePledges)
+    ? pledges[1].innerHTML + "/mo"
+    : pledges[0].innerHTML + " patrons";
 
   if (params.message) {
     message += " " + params.message;
