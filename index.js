@@ -20,15 +20,11 @@ const server = http.createServer(async (request, response) => {
     ? pledges[1].innerHTML + "/mo"
     : pledges[0].innerHTML + " patrons";
 
-  if (params.message) {
-    message += " " + params.message;
-  }
-
   const res = {
     schemaVersion: 1,
     label: "patreon",
     message: message,
-    color: params.color || "ff5441",
+    color: "ff5441",
     cacheSeconds: 60 * 60 * 8 // 8 hours
   }
   response.writeHead(200, { 'Content-Type': 'application/json' });
