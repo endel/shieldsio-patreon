@@ -1,4 +1,4 @@
-# shields.io for Patreon
+# shields.io for Patreon <a href="https://patreon.com/endel"><img src="https://img.shields.io/badge/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2Fendel%2Fpledgesssss&style=for-the-badge" /> </a>
 
 Custom endpoint to allow displaying Patreon's number of patrons or amount of pledges. It uses [shields.io's Endpoint feature](https://shields.io/#/endpoint).
 
