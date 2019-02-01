@@ -27,10 +27,11 @@ const server = http.createServer(async (request, response) => {
   }
 
   const res = {
-    "schemaVersion": 1,
-    "label": "patreon",
-    "message": message,
-    "color": params.color || "ff5441"
+    schemaVersion: 1,
+    label: "patreon",
+    message: message,
+    color: params.color || "ff5441",
+    cacheSeconds: 60 * 60 * 8 // 8 hours
   }
   response.writeHead(200, { 'Content-Type': 'application/json' });
   response.write(JSON.stringify(res));
