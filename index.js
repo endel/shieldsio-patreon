@@ -15,7 +15,7 @@ const server = http.createServer(async (request, response) => {
   const { data } = await httpie.get('https://patreon.com/' + username);
   const { document } = (new JSDOM(data)).window;
 
-  const pledges = document.querySelectorAll('h6.sc-iwsKbI');
+  const pledges = document.querySelectorAll('h2.sc-bZQynM.izRyKA');
   const message = (usePledges)
     ? pledges[1].innerHTML + "/mo"
     : pledges[0].innerHTML + " patrons";
