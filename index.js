@@ -15,10 +15,9 @@ const server = http.createServer(async (request, response) => {
   const { data } = await httpie.get('https://patreon.com/' + username);
   const { document } = (new JSDOM(data)).window;
 
-  const pledges = document.querySelectorAll('h2.sc-bZQynM.izRyKA');
   const message = (usePledges)
-    ? pledges[1].innerHTML + "/mo"
-    : pledges[0].innerHTML + " patrons";
+    ? document.querySelector('[data-tag="CampaignPatronEarningStats-earnings"] h2').innerHTML + "/mo"
+    : document.querySelector('[data-tag="CampaignPatronEarningStats-patron-count"] h2').innerHTML + " patrons";
 
   const res = {
     schemaVersion: 1,
