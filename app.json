@@ -1,0 +1,7 @@
+{
+  "name": "Shields.io Patreon endpoint",
+  "description": "Shields.io endpoint to display amount of donations/patrons you have on Patreon",
+  "repository": "https://github.com/endel/shieldsio-patreon",
+  "keywords": ["shieldsio", "patreon"],
+  "env": {}
+}
