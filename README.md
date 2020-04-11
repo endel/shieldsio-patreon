@@ -5,7 +5,7 @@ Custom endpoint to allow displaying Patreon's number of patrons or amount of ple
 ## ATTENTION
 
 Please deploy your own version of this on your own Heroku account. My version is
-hosted on Heroku Free Plan, and can be unavaialble as soon as it expires
+hosted on Heroku Free Plan, and can be unavaialble as soon as my usage expires
 (usually in the last few days of each month).
 
 <a href="https://heroku.com/deploy?template=https://github.com/endel/shieldsio-patreon">
