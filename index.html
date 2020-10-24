@@ -1,0 +1,54 @@
+<html>
+  <title>shields.io patreon badge</title>
+<head>
+</head>
+<body>
+  <h1><a href="https://github.com/endel/shieldsio-patreon">shieldsio-patreon</a></h1>
+  <p>
+    Custom endpoint to allow displaying Patreon's number of patrons or amount of pledges.
+  </p>
+
+  <input id="username" name="username" placeholder="username" value="endel" onchange="rebuild();" />
+  <br />
+
+  <label for="type_pledges">Show pledges $</label>
+  <input id="type_pledges" name="type" type="radio" value="pledges" onchange="rebuild();">
+
+  <label for="type_patrons">Show amount of patrons</label>
+  <input id="type_patrons" name="type" type="radio" value="patrons" checked="checked" onchange="rebuild();">
+  <input name="suffix" placeholder="suffix (optional)" value="" onchange="rebuild();"/>
+
+  <div>
+    <h2>shields.io endpoint / preview</h2>
+    <img id="preview" src="" alt="preview" />
+
+    <br />
+    <h3>Markdown image</h3>
+    <textarea id="markdown" cols="60" rows="6"></textarea>
+
+  <p>You may override some configurations for this badge. Check out the <a href="https://shields.io/#/endpoint">shields.io's Endpoint feature</a> documentation.</p>
+  </div>
+
+  <script type="text/javascript">
+    function rebuild() {
+      var img = document.querySelector('img#preview');
+      var textarea = document.querySelector('textarea#markdown');
+      img.src = "https://img.shields.io/badge/%20loading-brightgreen.svg?style=for-the-badge&colorB=000000";
+
+      var username = document.querySelector('input[name=username]').value;
+      var type = document.querySelector('input[type=radio]:checked').value;
+      var suffix = document.querySelector('input[name=suffix]').value;
+
+      var endpointUrl = `https://shieldsio-patreon.vercel.app/api?username=${username}&type=${type}`;
+      if (suffix) { endpointUrl += `&suffix=${encodeURIComponent(suffix)}`; }
+
+      var imageSrc = `https://img.shields.io/endpoint.svg?url=${encodeURIComponent(endpointUrl)}&style=for-the-badge`;
+      img.src = imageSrc;
+      textarea.innerHTML = `[![Support me on Patreon](${imageSrc})](https://patreon.com/${username})`;
+    }
+
+    rebuild();
+  </script>
+
+</body>
+</html>

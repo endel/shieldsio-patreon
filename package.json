@@ -4,7 +4,7 @@
   "description": "displays amount of donations you have on patreon",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "vercel dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,5 +24,8 @@
   "dependencies": {
     "httpie": "^1.0.1",
     "jsdom": "^13.2.0"
+  },
+  "devDependencies": {
+    "vercel": "^20.1.2"
   }
 }
