@@ -22,8 +22,7 @@
   },
   "homepage": "https://github.com/endel/shieldsio-patreon#readme",
   "dependencies": {
-    "httpie": "^1.0.1",
-    "jsdom": "^13.2.0"
+    "httpie": "^1.0.1"
   },
   "devDependencies": {
     "vercel": "^20.1.2"

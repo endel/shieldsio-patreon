@@ -1,6 +1,7 @@
 const http = require('http');
 const httpie = require('httpie');
-const JSDOM = require('jsdom').JSDOM;
+
+const CURRENCY = { USD: "$", EUR: "€", GBP: "£" };
 
 module.exports = async (request, response) => {
   const username = request.query.username;
@@ -14,11 +15,17 @@ module.exports = async (request, response) => {
   }
 
   const { data } = await httpie.get('https://patreon.com/' + username);
-  const { document } = (new JSDOM(data)).window;
+  const campaignAPI = data.match(/https:\/\/www.patreon.com\/api\/campaigns\/([0-9]+)/);
+
+  const { data: rawData } = await httpie.get(campaignAPI[0]);
+  const campaignData = JSON.parse(rawData)['data']['attributes'];
+
+  const patron_count = campaignData['patron_count'].toString().match(/([0-9]+)/)[1];
+  const campaign_pledge_sum = campaignData['campaign_pledge_sum']/100;
 
   const message = (type === "pledges")
-    ? document.querySelector('[data-tag="CampaignPatronEarningStats-earnings"] h2').innerHTML + (suffix || "/mo")
-    : document.querySelector('[data-tag="CampaignPatronEarningStats-patron-count"] h2').innerHTML + " " + (suffix || "patrons");
+    ? `${CURRENCY[campaignData['currency']]}${Math.floor(campaign_pledge_sum)}${(suffix || "/mo")}`
+    : `${patron_count} ${(suffix || "patrons")}`;
 
   response.send({
     schemaVersion: 1,
