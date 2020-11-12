@@ -1,5 +1,8 @@
 <html>
   <title>shields.io patreon badge</title>
+  <style>
+    body.loading { cursor: progress; }
+  </style>
 <head>
 </head>
 <body>
@@ -18,9 +21,34 @@
   <input id="type_patrons" name="type" type="radio" value="patrons" checked="checked" onchange="rebuild();">
   <input name="suffix" placeholder="suffix (optional)" value="" onchange="rebuild();"/>
 
+  <br />
+
+  <ul>
+    <li>
+      <label for="style_plastic">plastic</label>
+      <input id="style_plastic" name="style" type="radio" value="plastic" onchange="rebuild();">
+    </li>
+    <li>
+      <label for="style_flat">flat</label>
+      <input id="style_flat" name="style" type="radio" value="flat" onchange="rebuild();" checked="checked">
+    </li>
+    <li>
+      <label for="style_flatsquare">flat-square</label>
+      <input id="style_flatsquare" name="style" type="radio" value="flat-square" onchange="rebuild();">
+    </li>
+    <li>
+      <label for="style_forthebadge">for-the-badge</label>
+      <input id="style_forthebadge" name="style" type="radio" value="for-the-badge" onchange="rebuild();">
+    </li>
+    <li>
+      <label for="style_social">social</label>
+      <input id="style_social" name="style" type="radio" value="social" onchange="rebuild();">
+    </li>
+  </ul>
+
   <div>
     <h2>shields.io endpoint / preview</h2>
-    <img id="preview" src="" alt="preview" />
+    <img id="preview" src="" alt="Loading..." />
 
     <br />
     <h3>Markdown image</h3>
@@ -31,19 +59,23 @@
 
   <script type="text/javascript">
     function rebuild() {
+      document.body.classList.add("loading");
+
       var img = document.querySelector('img#preview');
       var textarea = document.querySelector('textarea#markdown');
       img.src = "https://img.shields.io/badge/%20loading-brightgreen.svg?style=for-the-badge&colorB=000000";
 
       var username = document.querySelector('input[name=username]').value;
-      var type = document.querySelector('input[type=radio]:checked').value;
+      var type = document.querySelector('input[type=radio][name=type]:checked').value;
+      var style = document.querySelector('input[type=radio][name=style]:checked').value;
       var suffix = document.querySelector('input[name=suffix]').value;
 
       var endpointUrl = `https://shieldsio-patreon.vercel.app/api?username=${username}&type=${type}`;
       if (suffix) { endpointUrl += `&suffix=${encodeURIComponent(suffix)}`; }
 
-      var imageSrc = `https://img.shields.io/endpoint.svg?url=${encodeURIComponent(endpointUrl)}&style=for-the-badge`;
+      var imageSrc = `https://img.shields.io/endpoint.svg?url=${encodeURIComponent(endpointUrl)}&style=${style}`;
       img.src = imageSrc;
+      img.onload = function() { document.body.classList.remove("loading"); }
       textarea.innerHTML = `[![Support me on Patreon](${imageSrc})](https://patreon.com/${username})`;
     }
 
