@@ -2,6 +2,8 @@ const http = require('http');
 const httpie = require('httpie');
 const port = process.env.PORT || 8888;
 
+const opts = { timeout: 3000 };
+
 const server = http.createServer(async (request, response) => {
   const [ _, username, usePledges ] = request.url.split("/");
 
@@ -11,10 +13,10 @@ const server = http.createServer(async (request, response) => {
     return;
   }
 
-  const { data } = await httpie.get('https://patreon.com/' + username);
+  const { data } = await httpie.get('https://patreon.com/' + username, opts);
   const campaignAPI = data.match(/https:\/\/www.patreon.com\/api\/campaigns\/([0-9]+)/);
 
-  const { data: rawData } = await httpie.get(campaignAPI[0]);
+  const { data: rawData } = await httpie.get(campaignAPI[0], opts);
   const campaignData = JSON.parse(rawData)['data']['attributes'];
 
   const patron_count = campaignData['patron_count'].toString().match(/([0-9]+)/)[1];
