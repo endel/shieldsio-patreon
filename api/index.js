@@ -21,8 +21,8 @@ module.exports = async (request, response) => {
   const { data: rawData } = await httpie.get(campaignAPI[0], opts);
   const campaignData = JSON.parse(rawData)['data']['attributes'];
 
-  const patron_count = campaignData['patron_count'].toString().match(/([0-9]+)/)[1];
-  const campaign_pledge_sum = campaignData['campaign_pledge_sum']/100;
+  const patron_count = campaignData['patron_count'] ?? 0;
+  const campaign_pledge_sum = campaignData['campaign_pledge_sum']/100 || 0;
 
   const message = (type === "pledges")
     ? `${CURRENCY[campaignData['currency']]}${Math.floor(campaign_pledge_sum)}${(suffix || "/mo")}`
